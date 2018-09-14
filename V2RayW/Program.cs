@@ -188,11 +188,11 @@ namespace V2RayW
             await stopV2Ray();
             if(coreLoaded)
             {
-                if ((selectedServerIndex >= 0 && selectedServerIndex < profiles.Count) ||
-                    (selectedCusServerIndex >= 0 && selectedCusServerIndex < cusProfiles.Count))
+                if (selectedServerIndex >= 0 && (selectedServerIndex <= profiles.Count || selectedCusServerIndex <= cusProfiles.Count))
                 {
                     loadV2ray();
-                } else
+                }
+                else
                 {
                     coreLoaded = false;
                     if (proxyMode != 3)
