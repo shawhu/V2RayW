@@ -299,7 +299,7 @@ namespace V2RayW
             foreach(var p in defaults.profilesStr.Split('\t'))
             {
                 var aP = js.Deserialize<ServerProfile>(p);
-                if (aP is null)
+                if (aP == null)
                 {
                     continue;
                 }

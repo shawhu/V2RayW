@@ -68,7 +68,11 @@ namespace V2RayW
                 cusServerMenuItems[Program.selectedCusServerIndex].Checked = true;
             } else
             {
-                serverMenuItems[Program.selectedServerIndex].Checked = true;
+                try
+                {
+                    serverMenuItems[Program.selectedServerIndex].Checked = true;
+                }
+                catch { }
             }
             foreach(var p in serverMenuItems)
             {
@@ -76,7 +80,12 @@ namespace V2RayW
             }
             if(serverMenuItems.Count() > 1)
             {
-                serversToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem("use all", null, switchToServer));
+                var item = new ToolStripMenuItem("use all", null, switchToServer);
+                if (Program.selectedServerIndex>(serverMenuItems.Count()-1))
+                {
+                    item.Checked = true;
+                }
+                serversToolStripMenuItem.DropDownItems.Add(item);
             }
             if (serverMenuItems.Count() > 0 && cusServerMenuItems.Count() > 0)
             {
